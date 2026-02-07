@@ -9,6 +9,123 @@
         body { background-color: #121416; color: #ffffff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px 10px; line-height: 1.6; }
         .container { max-width: 1000px; margin: 0 auto; background: #1a1c1e; border: 2px solid #d4af37; border-radius: 8px; padding: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
         
+        /* HORIZONTAL MENU */
+        .nav-menu { 
+            background: linear-gradient(135deg, #1a1c1e 0%, #25282c 100%); 
+            border: 1px solid #d4af37; 
+            border-radius: 4px; 
+            margin-bottom: 25px; 
+            padding: 0;
+            overflow: hidden;
+        }
+        .nav-menu ul { 
+            list-style: none; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .nav-menu li { margin: 0; }
+        .nav-menu a { 
+            display: block; 
+            padding: 15px 25px; 
+            color: #add8e6; 
+            text-decoration: none; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            font-size: 0.85rem; 
+            letter-spacing: 1px;
+            border-right: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+        .nav-menu li:last-child a { border-right: none; }
+        .nav-menu a:hover, .nav-menu a.active { 
+            background: #d4af37; 
+            color: #000; 
+        }
+
+        /* CONTENT SECTIONS */
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+
+        /* NEWS & OPINIONS STYLING */
+        .news-form, .opinion-form {
+            background: #25282c;
+            padding: 20px;
+            border: 1px solid #383c42;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .news-form input, .news-form textarea, .opinion-form textarea, .opinion-form input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            background: #121416;
+            border: 1px solid #383c42;
+            color: #ffffff;
+            border-radius: 4px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .news-form button, .opinion-form button {
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .news-form button:hover, .opinion-form button:hover {
+            background: #f1c40f;
+            transform: scale(1.02);
+        }
+        .news-item {
+            background: #25282c;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-left: 3px solid #d4af37;
+            border-radius: 4px;
+        }
+        .news-title {
+            color: #d4af37;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .news-date {
+            color: #add8e6;
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+        }
+        .news-content {
+            color: #b0b3b8;
+            line-height: 1.6;
+        }
+        .opinion-item {
+            background: #1a1c1e;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 3px solid #add8e6;
+            border-radius: 4px;
+        }
+        .opinion-author {
+            color: #d4af37;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .opinion-text {
+            color: #b0b3b8;
+        }
+        .opinion-date {
+            color: #666;
+            font-size: 0.7rem;
+            margin-top: 8px;
+        }
+
         /* HEADER AREA */
         .header { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; margin-bottom: 30px; }
         .identity-group { display: flex; gap: 20px; align-items: center; }
@@ -59,170 +176,433 @@
             .academic-box { width: 100%; margin-top: 15px; }
             .title-area h1 { font-size: 1.8rem; text-align: center; }
             .title-area { text-align: center; }
+            .nav-menu ul { flex-direction: column; }
+            .nav-menu a { border-right: none; border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
+            .nav-menu li:last-child a { border-bottom: none; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header class="header">
-        <div class="identity-group">
-            <div style="text-align: center;">
-                <svg viewBox="0 0 24 24" class="scidati-icon"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-                <div style="font-size: 0.8rem; letter-spacing: 2px; color: #add8e6; margin-top: 5px;">SCIDATI</div>
-            </div>
-            <div class="title-area">
-                <h1>J. MANUEL F.G</h1>
-                <div class="role-tag">BI Architect & AI Strategist</div>
-                <p><i>Leveraging BBA logic for Technical Infrastructure.</i></p>
-            </div>
-        </div>
+    <!-- NAVIGATION MENU -->
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="#" class="nav-link active" data-section="portfolio">Portfolio</a></li>
+            <li><a href="#" class="nav-link" data-section="news">News & Updates</a></li>
+            <li><a href="#" class="nav-link" data-section="opinions">User Opinions</a></li>
+        </ul>
+    </nav>
 
-        <div class="academic-box">
-            <h4>Academic Foundation</h4>
-            <div class="academic-item"><b>Univ. Master Degree</b><span>Multiplatform App Management & Dev</span></div>
-            <div class="academic-item"><b>Business Administration Degree</b><span>BBA - Strategic Excellence</span></div>
-        </div>
-    </header>
+    <!-- PORTFOLIO SECTION (Original Content) -->
+    <div id="portfolio-section" class="content-section active">
+        <header class="header">
+            <div class="identity-group">
+                <div style="text-align: center;">
+                    <svg viewBox="0 0 24 24" class="scidati-icon"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                    <div style="font-size: 0.8rem; letter-spacing: 2px; color: #add8e6; margin-top: 5px;">SCIDATI</div>
+                </div>
+                <div class="title-area">
+                    <h1>J. MANUEL FG</h1>
+                    <div class="role-tag">BI Architect & AI Strategist</div>
+                    <p><i>Leveraging BBA logic for Technical Infrastructure.</i></p>
+                </div>
+            </div>
 
-    <div class="grid">
-        <div class="card">
-            <h3>Knowledge Matrix</h3>
-            <div class="matrix-row">
-                <div class="matrix-label"><span>Power BI & Data Modeling</span><span>85%</span></div>
-                <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
+            <div class="academic-box">
+                <h4>Academic Foundation</h4>
+                <div class="academic-item"><b>Univ. Master Degree</b><span>Multiplatform App Management & Dev</span></div>
+                <div class="academic-item"><b>Business Administration Degree</b><span>BBA - Strategic Excellence</span></div>
             </div>
-            <div class="matrix-row">
-                <div class="matrix-label"><span>Tableau Visualization</span><span>80%</span></div>
-                <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Knowledge Matrix</h3>
+                <div class="matrix-row">
+                    <div class="matrix-label"><span>Power BI & Data Modeling</span><span>85%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="matrix-row">
+                    <div class="matrix-label"><span>Tableau Visualization</span><span>80%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
+                </div>
+                <div class="matrix-row">
+                    <div class="matrix-label"><span>Clinical AI (RAG) Systems</span><span>95%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+                </div>
             </div>
-            <div class="matrix-row">
-                <div class="matrix-label"><span>Clinical AI (RAG) Systems</span><span>95%</span></div>
-                <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h3><span class="dot"></span> Active Project Gallery</h3>
             
-            <div class="project">
-                <span class="project-title">Corporate ROI Optimizer</span>
-                <p class="project-desc">A Power BI dashboard integrating BBA financial formulas to track real-time operational efficiency.</p>
-                <span class="project-status">In Development</span>
-            </div>
+            <div class="card">
+                <h3><span class="dot"></span> Active Project Gallery</h3>
+                
+                <div class="project">
+                    <span class="project-title">Corporate ROI Optimizer</span>
+                    <p class="project-desc">A Power BI dashboard integrating BBA financial formulas to track real-time operational efficiency.</p>
+                    <span class="project-status">In Development</span>
+                </div>
 
-            <div class="project">
-                <span class="project-title">Multiplatform User Funnel</span>
-                <p class="project-desc">Tableau visualization analyzing application retention rates across Android, iOS, and Web.</p>
-                <span class="project-status">Designing Architecture</span>
+                <div class="project">
+                    <span class="project-title">Multiplatform User Funnel</span>
+                    <p class="project-desc">Tableau visualization analyzing application retention rates across Android, iOS, and Web.</p>
+                    <span class="project-status">Designing Architecture</span>
+                </div>
             </div>
         </div>
+
+        <div class="btn-container">
+            <button id="vault-btn" onclick="toggleVault()">Watch Verified Credentials (60+)</button>
+        </div>
+
+        <div id="cert-vault">
+            <table>
+                <thead><tr><th>Credential Name</th><th>Institution</th><th>Status</th></tr></thead>
+                <tbody>
+                    <tr><td>* Claude Code: Software Engineering with Generative AI Agents</td><td>Vanderbilt Univers.</td><td>2026</td></tr>
+                    <tr><td>* Microsoft Azure for AI and ML</td><td>IBM</td><td>2026</td></tr>
+                    <tr><td>* Multimodel Systems with OpenAI</td><td>IBM</td><td>2026</td></tr>
+                    <tr><td>* Introduction to Generative AI in Healthcare</td><td>IBM</td><td>2026</td></tr>
+                    <tr><td>* IBM AI Product Manager Profess.Certificate</td><td>IBM</td><td>2026</td></tr>
+                    <tr><td>* AI Strategy</td><td>365 Data Science</td><td>2026</td></tr>
+                    <tr><td>* Generative AI for Data Scientists Specialization</td><td>IBM</td><td>2026</td></tr>
+                    <tr><td>* Applied Data Science Specialization</td><td>IBM</td><td>2025</td></tr>
+                    <tr><td>* Deploying AI into Production with FastAPI</td><td>Datacamp</td><td>2025</td></tr>
+                    <tr><td>* Generative AI Fundamentals Specialization</td><td>IBM</td><td>2025</td></tr>
+                    <tr><td>* Vector Databases for RAG</td><td>IBM</td><td>2025</td></tr>
+                    <tr><td>* Generative AI for Software Developers Specialization</td><td>IBM</td><td>2025</td></tr>
+                    <tr><td>* Generative AI: Elevate your Software Development Career</td><td>IBM</td><td>2025</td></tr>
+                    <tr><td>* Build RAG Applications: Get Started</td><td>IBM</td><td>2025</td></tr>
+                    <tr><td>* Generative AI: Supercharge Your Product Management Career</td><td>SkillUp</td><td>2025</td></tr>
+                    <tr><td>* Generative AI: Foundation Models and Platforms</td><td>IBM</td><td>2025</td></tr>
+                    <tr><td>* Prompt Engineer for Healthcare and Medical AI (PEHM) Certification</td><td>Udemy</td><td>2025</td></tr>
+                    <tr><td>* Introduction to AI Agents</td><td>DataCamp</td><td>2025</td></tr>
+                    <tr><td>* Product Management: An Introduction</td><td>IBM</td><td>2025</td></tr>
+                    <tr><td>* Product Management: Building AI-Powered Products</td><td>IBM</td><td>2025</td></tr>
+                    <tr><td>* AI Agent Fundamentals</td><td>DataCamp</td><td>2025</td></tr>
+                    <tr><td>* Intro to AI Agents and Agentic AI</td><td>365 Data Science</td><td>2025</td></tr>
+                    <tr><td>* AWS Generative AI Applications Professional Certificate</td><td>AWS</td><td>2025</td></tr>
+                    <tr><td>* AWS Services for AI Solutions</td><td>AWS</td><td>2025</td></tr>
+                    <tr><td>* AI and Machine Learning Algorithms and Techniques</td><td>Microsoft</td><td>2025</td></tr>
+                    <tr><td>* AWS Generative AI Applications</td><td>AWS</td><td>2025</td></tr>
+                    <tr><td>* Implementing AI Solutions in Business</td><td>DataCamp</td><td>2025</td></tr>
+                    <tr><td>* AI Fundamentals and the Cloud</td><td>AWS</td><td>2025</td></tr>
+                    <tr><td>* Foundations of AI and Machine Learning</td><td>DataCamp</td><td>2025</td></tr>
+                    <tr><td>* Build Chat Applications with OpenAI and LangChain</td><td>365 Data Science</td><td>2025</td></tr>
+                    <tr><td>* Designing Agentic Systems with LangChain</td><td>DataCamp</td><td>2025</td></tr>
+                    <tr><td>* Introduction to Generative AI for Data Analysis</td><td>Microsoft</td><td>2025</td></tr>
+                    <tr><td>* Retrieval Augmented Generation (RAG) with LangChain</td><td>DataCamp</td><td>2025</td></tr>
+                    <tr><td>* OpenAI Fundamentals Track</td><td>DataCamp</td><td>2025</td></tr>
+                    <tr><td>* Developing AI Applications Track</td><td>DataCamp</td><td>2025</td></tr>
+                    <tr><td>* Associate AI Engineer for Data Scientists Track</td><td>DataCamp</td><td>2025</td></tr>
+                    <tr><td>* Working with Llama 3</td><td>DataCamp</td><td>2025</td></tr>
+                    <tr><td>* Intermediate ChatGPT</td><td>DataCamp</td><td>2025</td></tr>
+                    <tr><td>* Generative AI for Data Engineers Specialization</td><td>IBM</td><td>2024</td></tr>
+                    <tr><td>* Associate AI Engineer for Developers Track</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* Developing LLM Applications with LangChain</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* Introduction to Embeddings with the OpenAI API</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* Artificial Intelligence (AI) Leadership</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* Generative AI: Elevate your Business Intelligence Career</td><td>SkillUp</td><td>2024</td></tr>
+                    <tr><td>* Generative AI for Business Intelligence Analysts Specialization</td><td>IBM</td><td>2024</td></tr>
+                    <tr><td>* Monetizing Artificial Intelligence</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* Responsible AI Data Management</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* Developing AI Systems with the OpenAI API</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* Generative AI: Elevate your Data Engineering Career</td><td>IBM</td><td>2024</td></tr>
+                    <tr><td>* LLMOps Concepts</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* Working with Hugging Face</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* ChatGPT Prompt Engineering for Developers</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* Generative AI: Enhance your Data Analytics Career</td><td>IBM</td><td>2024</td></tr>
+                    <tr><td>* Working with the OpenAI API</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* EU AI Act Fundamentals</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* Understanding the EU AI Act</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* Generative AI: Prompt Engineering Basics</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* Generative AI for Executives</td><td>AWS</td><td>2024</td></tr>
+                    <tr><td>* Discovering Ethical AI</td><td>Udacity</td><td>2024</td></tr>
+                    <tr><td>* Discovering Artificial Intelligence and Machine Learning</td><td>Udacity</td><td>2024</td></tr>
+                    <tr><td>* AI Fundamentals</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* Generative AI Concepts</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* AI Business Fundamentals</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* AI Ethics</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* Artificial Intelligence (AI) Strategy</td><td>DataCamp</td><td>2024</td></tr>
+                    <tr><td>* Large Language Models (LLMs) Concepts</td><td>DataCamp</td><td>2023</td></tr>
+                    <tr><td>* Generative AI for Business</td><td>DataCamp</td><td>2023</td></tr>
+                    <tr><td>* Understanding Artificial Intelligence</td><td>DataCamp</td><td>2023</td></tr>
+                    <tr><td>* AI and Public Health</td><td>Deep Learning.AI</td><td>2023</td></tr>
+                    <tr><td>* Implementing AI Solutions in Business</td><td>DataCamp</td><td>2023</td></tr>
+                    <tr><td>* AI for Business Specialization</td><td>Wharton</td><td>2022</td></tr>
+                    <tr><td>* AI Strategy and Governance</td><td>Wharton</td><td>2022</td></tr>
+                    <tr><td>* AI Applications in People Management</td><td>Wharton</td><td>2022</td></tr>
+                    <tr><td>* AI Foundations for Everyone</td><td>IBM</td><td>2022</td></tr>
+                    <tr><td>* AI Fundamentals for Non-Data Scientists</td><td>Wharton</td><td>2022</td></tr>
+                    <tr><td>* Solve Business Problems with AI and Machine Learning</td><td>CertNexus</td><td>2021</td></tr>
+                    <tr><td>* Artificial Intelligence on Microsoft Azure</td><td>Microsoft</td><td>2021</td></tr>
+                    <tr><td>* Building AI Powered Chatbots Without Programming</td><td>IBM</td><td>2020</td></tr>
+                    <tr><td>* IBM AI Foundations for Business</td><td>IBM</td><td>2020</td></tr>
+                    <tr><td>* A Framework for Deploying AI in your Enterprise</td><td>IBM</td><td>2020</td></tr>
+                    <tr><td>* Introduction to Artificial Intelligence (AI)</td><td>IBM</td><td>2020</td></tr>
+                    <tr><td>* AI For Everyone</td><td>DeepLearning.AI</td><td>2019</td></tr>
+                    <tr><td>* New Technologies for Business Leaders</td><td>Rutgers</td><td>2018</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer style="text-align: center; margin-top: 40px; border-top: 1px solid #383c42; padding-top: 20px; color: #add8e6; font-size: 0.85rem;">
+            Professional Contact: <b>juansidata@gmail.com</b> | SciDati Ecosystem
+        </footer>
     </div>
 
-    <div class="btn-container">
-        <button id="vault-btn" onclick="toggleVault()">Watch Verified Credentials (60+)</button>
+    <!-- NEWS SECTION (React will mount here) -->
+    <div id="news-section" class="content-section">
+        <div id="news-app"></div>
     </div>
 
-    <div id="cert-vault">
-        <table>
-            <thead><tr><th>Credential Name</th><th>Institution</th><th>Status</th></tr></thead>
-            <tbody>
-                <tr><td>* Microsoft Azure for AI and ML</td><td>IBM</td><td>2026</td></tr>
-                <tr><td>* Multimodel Systems with OpenAI</td><td>IBM</td><td>2026</td></tr>
-                <tr><td>* Introduction to Generative AI in Healthcare</td><td>IBM</td><td>2026</td></tr>
-                <tr><td>* IBM AI Product Manager Profess.Certificate</td><td>IBM</td><td>2026</td></tr>
-                <tr><td>* AI Strategy</td><td>365 Data Science</td><td>2026</td></tr>
-                <tr><td>* Generative AI for Data Scientists Specialization</td><td>IBM</td><td>2026</td></tr>
-                <tr><td>* Applied Data Science Specialization</td><td>IBM</td><td>2025</td></tr>
-                <tr><td>* Deploying AI into Production with FastAPI</td><td>Datacamp</td><td>2025</td></tr>
-                <tr><td>* Generative AI Fundamentals Specialization</td><td>IBM</td><td>2025</td></tr>
-                <tr><td>* Vector Databases for RAG</td><td>IBM</td><td>2025</td></tr>
-                <tr><td>* Generative AI for Software Developers Specialization</td><td>IBM</td><td>2025</td></tr>
-                <tr><td>* Generative AI: Elevate your Software Development Career</td><td>IBM</td><td>2025</td></tr>
-                <tr><td>* Build RAG Applications: Get Started</td><td>IBM</td><td>2025</td></tr>
-                <tr><td>* Generative AI: Supercharge Your Product Management Career</td><td>SkillUp</td><td>2025</td></tr>
-                <tr><td>* Generative AI: Foundation Models and Platforms</td><td>IBM</td><td>2025</td></tr>
-                <tr><td>* Prompt Engineer for Healthcare and Medical AI (PEHM) Certification</td><td>Udemy</td><td>2025</td></tr>
-                <tr><td>* Introduction to AI Agents</td><td>DataCamp</td><td>2025</td></tr>
-                <tr><td>* Product Management: An Introduction</td><td>IBM</td><td>2025</td></tr>
-                <tr><td>* Product Management: Building AI-Powered Products</td><td>IBM</td><td>2025</td></tr>
-                <tr><td>* AI Agent Fundamentals</td><td>DataCamp</td><td>2025</td></tr>
-                <tr><td>* Intro to AI Agents and Agentic AI</td><td>365 Data Science</td><td>2025</td></tr>
-                <tr><td>* AWS Generative AI Applications Professional Certificate</td><td>AWS</td><td>2025</td></tr>
-                <tr><td>* AWS Services for AI Solutions</td><td>AWS</td><td>2025</td></tr>
-                <tr><td>* AI and Machine Learning Algorithms and Techniques</td><td>Microsoft</td><td>2025</td></tr>
-                <tr><td>* AWS Generative AI Applications</td><td>AWS</td><td>2025</td></tr>
-                <tr><td>* Implementing AI Solutions in Business</td><td>DataCamp</td><td>2025</td></tr>
-                <tr><td>* AI Fundamentals and the Cloud</td><td>AWS</td><td>2025</td></tr>
-                <tr><td>* Foundations of AI and Machine Learning</td><td>DataCamp</td><td>2025</td></tr>
-                <tr><td>* Build Chat Applications with OpenAI and LangChain</td><td>365 Data Science</td><td>2025</td></tr>
-                <tr><td>* Designing Agentic Systems with LangChain</td><td>DataCamp</td><td>2025</td></tr>
-                <tr><td>* Introduction to Generative AI for Data Analysis</td><td>Microsoft</td><td>2025</td></tr>
-                <tr><td>* Retrieval Augmented Generation (RAG) with LangChain</td><td>DataCamp</td><td>2025</td></tr>
-                <tr><td>* OpenAI Fundamentals Track</td><td>DataCamp</td><td>2025</td></tr>
-                <tr><td>* Developing AI Applications Track</td><td>DataCamp</td><td>2025</td></tr>
-                <tr><td>* Associate AI Engineer for Data Scientists Track</td><td>DataCamp</td><td>2025</td></tr>
-                <tr><td>* Working with Llama 3</td><td>DataCamp</td><td>2025</td></tr>
-                <tr><td>* Intermediate ChatGPT</td><td>DataCamp</td><td>2025</td></tr>
-                <tr><td>* Generative AI for Data Engineers Specialization</td><td>IBM</td><td>2024</td></tr>
-                <tr><td>* Associate AI Engineer for Developers Track</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* Developing LLM Applications with LangChain</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* Introduction to Embeddings with the OpenAI API</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* Artificial Intelligence (AI) Leadership</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* Generative AI: Elevate your Business Intelligence Career</td><td>SkillUp</td><td>2024</td></tr>
-                <tr><td>* Generative AI for Business Intelligence Analysts Specialization</td><td>IBM</td><td>2024</td></tr>
-                <tr><td>* Monetizing Artificial Intelligence</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* Responsible AI Data Management</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* Developing AI Systems with the OpenAI API</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* Generative AI: Elevate your Data Engineering Career</td><td>IBM</td><td>2024</td></tr>
-                <tr><td>* LLMOps Concepts</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* Working with Hugging Face</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* ChatGPT Prompt Engineering for Developers</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* Generative AI: Enhance your Data Analytics Career</td><td>IBM</td><td>2024</td></tr>
-                <tr><td>* Working with the OpenAI API</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* EU AI Act Fundamentals</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* Understanding the EU AI Act</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* Generative AI: Prompt Engineering Basics</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* Generative AI for Executives</td><td>AWS</td><td>2024</td></tr>
-                <tr><td>* Discovering Ethical AI</td><td>Udacity</td><td>2024</td></tr>
-                <tr><td>* Discovering Artificial Intelligence and Machine Learning</td><td>Udacity</td><td>2024</td></tr>
-                <tr><td>* AI Fundamentals</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* Generative AI Concepts</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* AI Business Fundamentals</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* AI Ethics</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* Artificial Intelligence (AI) Strategy</td><td>DataCamp</td><td>2024</td></tr>
-                <tr><td>* Large Language Models (LLMs) Concepts</td><td>DataCamp</td><td>2023</td></tr>
-                <tr><td>* Generative AI for Business</td><td>DataCamp</td><td>2023</td></tr>
-                <tr><td>* Understanding Artificial Intelligence</td><td>DataCamp</td><td>2023</td></tr>
-                <tr><td>* AI and Public Health</td><td>Deep Learning.AI</td><td>2023</td></tr>
-                <tr><td>* Implementing AI Solutions in Business</td><td>DataCamp</td><td>2023</td></tr>
-                <tr><td>* AI for Business Specialization</td><td>Wharton</td><td>2022</td></tr>
-                <tr><td>* AI Strategy and Governance</td><td>Wharton</td><td>2022</td></tr>
-                <tr><td>* AI Applications in People Management</td><td>Wharton</td><td>2022</td></tr>
-                <tr><td>* AI Foundations for Everyone</td><td>IBM</td><td>2022</td></tr>
-                <tr><td>* AI Fundamentals for Non-Data Scientists</td><td>Wharton</td><td>2022</td></tr>
-                <tr><td>* Solve Business Problems with AI and Machine Learning</td><td>CertNexus</td><td>2021</td></tr>
-                <tr><td>* Artificial Intelligence on Microsoft Azure</td><td>Microsoft</td><td>2021</td></tr>
-                <tr><td>* Building AI Powered Chatbots Without Programming</td><td>IBM</td><td>2020</td></tr>
-                <tr><td>* IBM AI Foundations for Business</td><td>IBM</td><td>2020</td></tr>
-                <tr><td>* A Framework for Deploying AI in your Enterprise</td><td>IBM</td><td>2020</td></tr>
-                <tr><td>* Introduction to Artificial Intelligence (AI)</td><td>IBM</td><td>2020</td></tr>
-                <tr><td>* AI For Everyone</td><td>DeepLearning.AI</td><td>2019</td></tr>
-                <tr><td>* New Technologies for Business Leaders</td><td>Rutgers</td><td>2018</td></tr>
-            </tbody>
-        </table>
+    <!-- OPINIONS SECTION (React will mount here) -->
+    <div id="opinions-section" class="content-section">
+        <div id="opinions-app"></div>
     </div>
-
-    <footer style="text-align: center; margin-top: 40px; border-top: 1px solid #383c42; padding-top: 20px; color: #add8e6; font-size: 0.85rem;">
-        Professional Contact: <b>juansidata@gmail.com</b> | SciDati Ecosystem
-    </footer>
 </div>
 
+<!-- Load React and Babel from CDN -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<!-- Original JavaScript -->
 <script>
     function toggleVault() {
         var v = document.getElementById("cert-vault");
         v.style.display = (v.style.display === "block") ? "none" : "block";
     }
+
+    // Navigation functionality
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all links
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            // Add active class to clicked link
+            this.classList.add('active');
+            
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            const sectionId = this.getAttribute('data-section') + '-section';
+            document.getElementById(sectionId).classList.add('active');
+        });
+    });
+</script>
+
+<!-- React Components with localStorage -->
+<script type="text/babel">
+    const { useState, useEffect } = React;
+
+    // NEWS COMPONENT
+    function NewsApp() {
+        const [news, setNews] = useState([]);
+        const [title, setTitle] = useState('');
+        const [content, setContent] = useState('');
+
+        useEffect(() => {
+            // Load news from localStorage
+            const savedNews = localStorage.getItem('portfolioNews');
+            if (savedNews) {
+                setNews(JSON.parse(savedNews));
+            }
+        }, []);
+
+        const addNews = (e) => {
+            e.preventDefault();
+            if (title.trim() && content.trim()) {
+                const newItem = {
+                    id: Date.now(),
+                    title: title,
+                    content: content,
+                    date: new Date().toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    })
+                };
+                const updatedNews = [newItem, ...news];
+                setNews(updatedNews);
+                localStorage.setItem('portfolioNews', JSON.stringify(updatedNews));
+                setTitle('');
+                setContent('');
+            }
+        };
+
+        const deleteNews = (id) => {
+            const updatedNews = news.filter(item => item.id !== id);
+            setNews(updatedNews);
+            localStorage.setItem('portfolioNews', JSON.stringify(updatedNews));
+        };
+
+        return (
+            <div>
+                <h2 style={{color: '#d4af37', borderBottom: '2px solid #383c42', paddingBottom: '15px'}}>
+                    News & Updates
+                </h2>
+                
+                <div className="news-form">
+                    <h3 style={{color: '#add8e6', marginTop: 0}}>Add New Update</h3>
+                    <form onSubmit={addNews}>
+                        <input 
+                            type="text" 
+                            placeholder="Title" 
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                        />
+                        <textarea 
+                            placeholder="Content" 
+                            rows="4"
+                            value={content}
+                            onChange={(e) => setContent(e.target.value)}
+                        ></textarea>
+                        <button type="submit">Publish News</button>
+                    </form>
+                </div>
+
+                <div style={{marginTop: '30px'}}>
+                    <h3 style={{color: '#add8e6'}}>Recent Updates</h3>
+                    {news.length === 0 ? (
+                        <p style={{color: '#b0b3b8', fontStyle: 'italic'}}>No news yet. Add your first update!</p>
+                    ) : (
+                        news.map(item => (
+                            <div key={item.id} className="news-item">
+                                <div className="news-title">{item.title}</div>
+                                <div className="news-date">{item.date}</div>
+                                <div className="news-content">{item.content}</div>
+                                <button 
+                                    onClick={() => deleteNews(item.id)}
+                                    style={{
+                                        marginTop: '10px',
+                                        padding: '6px 12px',
+                                        background: '#383c42',
+                                        color: '#add8e6',
+                                        border: 'none',
+                                        borderRadius: '3px',
+                                        cursor: 'pointer',
+                                        fontSize: '0.75rem'
+                                    }}
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        ))
+                    )}
+                </div>
+            </div>
+        );
+    }
+
+    // OPINIONS COMPONENT
+    function OpinionsApp() {
+        const [opinions, setOpinions] = useState([]);
+        const [name, setName] = useState('');
+        const [opinion, setOpinion] = useState('');
+
+        useEffect(() => {
+            // Load opinions from localStorage
+            const savedOpinions = localStorage.getItem('portfolioOpinions');
+            if (savedOpinions) {
+                setOpinions(JSON.parse(savedOpinions));
+            }
+        }, []);
+
+        const addOpinion = (e) => {
+            e.preventDefault();
+            if (name.trim() && opinion.trim()) {
+                const newOpinion = {
+                    id: Date.now(),
+                    name: name,
+                    text: opinion,
+                    date: new Date().toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric'
+                    })
+                };
+                const updatedOpinions = [newOpinion, ...opinions];
+                setOpinions(updatedOpinions);
+                localStorage.setItem('portfolioOpinions', JSON.stringify(updatedOpinions));
+                setName('');
+                setOpinion('');
+            }
+        };
+
+        const deleteOpinion = (id) => {
+            const updatedOpinions = opinions.filter(item => item.id !== id);
+            setOpinions(updatedOpinions);
+            localStorage.setItem('portfolioOpinions', JSON.stringify(updatedOpinions));
+        };
+
+        return (
+            <div>
+                <h2 style={{color: '#d4af37', borderBottom: '2px solid #383c42', paddingBottom: '15px'}}>
+                    User Opinions & Feedback
+                </h2>
+                
+                <div className="opinion-form">
+                    <h3 style={{color: '#add8e6', marginTop: 0}}>Share Your Opinion</h3>
+                    <form onSubmit={addOpinion}>
+                        <input 
+                            type="text" 
+                            placeholder="Your Name" 
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                        <textarea 
+                            placeholder="Your opinion or feedback..." 
+                            rows="4"
+                            value={opinion}
+                            onChange={(e) => setOpinion(e.target.value)}
+                        ></textarea>
+                        <button type="submit">Submit Opinion</button>
+                    </form>
+                </div>
+
+                <div style={{marginTop: '30px'}}>
+                    <h3 style={{color: '#add8e6'}}>Community Feedback ({opinions.length})</h3>
+                    {opinions.length === 0 ? (
+                        <p style={{color: '#b0b3b8', fontStyle: 'italic'}}>No opinions yet. Be the first to share your thoughts!</p>
+                    ) : (
+                        opinions.map(item => (
+                            <div key={item.id} className="opinion-item">
+                                <div className="opinion-author">{item.name}</div>
+                                <div className="opinion-text">{item.text}</div>
+                                <div className="opinion-date">{item.date}</div>
+                                <button 
+                                    onClick={() => deleteOpinion(item.id)}
+                                    style={{
+                                        marginTop: '8px',
+                                        padding: '5px 10px',
+                                        background: '#25282c',
+                                        color: '#add8e6',
+                                        border: '1px solid #383c42',
+                                        borderRadius: '3px',
+                                        cursor: 'pointer',
+                                        fontSize: '0.7rem'
+                                    }}
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        ))
+                    )}
+                </div>
+            </div>
+        );
+    }
+
+    // Render React components
+    const newsRoot = ReactDOM.createRoot(document.getElementById('news-app'));
+    newsRoot.render(<NewsApp />);
+
+    const opinionsRoot = ReactDOM.createRoot(document.getElementById('opinions-app'));
+    opinionsRoot.render(<OpinionsApp />);
 </script>
 
 </body>
