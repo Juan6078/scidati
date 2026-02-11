@@ -43,6 +43,7 @@
             letter-spacing: 1px;
             border-right: 1px solid rgba(212, 175, 55, 0.3);
             transition: all 0.3s ease;
+            font-family: Tahoma, Arial, sans-serif;
         }
         .nav-menu li:last-child a { border-right: none; }
         .nav-menu a:hover, .nav-menu a.active { 
@@ -357,13 +358,13 @@
         </div>
 
         <footer style="text-align: center; margin-top: 40px; border-top: 1px solid #383c42; padding-top: 20px; color: #add8e6; font-size: 0.85rem;">
-            Professional Contact: <b><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="402a35212e33292421342100272d21292c6e232f2d">[email&#160;protected]</a></b> | SciDati Ecosystem
+            Professional Contact: <b><a href="mailto:juansidata@gmail.com" style="color:#add8e6;">juansidata@gmail.com</a></b> | SciDati Ecosystem
         </footer>
     </div>
 
     <!-- BLOG SECTION -->
     <div id="blog-section" class="content-section">
-        <h2 style="color: #d4af37; border-bottom: 2px solid #383c42; padding-bottom: 15px;">Professional Blog</h2>
+        <h2 class="section-title" data-section-key="blog" style="color: #d4af37; border-bottom: 2px solid #383c42; padding-bottom: 15px;">Professional Blog</h2>
         
         <div class="news-form">
             <h3 style="color: #add8e6; margin-top: 0;">Write New Post</h3>
@@ -387,7 +388,7 @@
 
     <!-- AI UPDATES SECTION -->
     <div id="ai-updates-section" class="content-section">
-        <h2 style="color: #d4af37; border-bottom: 2px solid #383c42; padding-bottom: 15px;">Latest AI & Technology Updates</h2>
+        <h2 class="section-title" data-section-key="ai-updates" style="color: #d4af37; border-bottom: 2px solid #383c42; padding-bottom: 15px;">Latest AI & Technology Updates</h2>
         <p style="color: #b0b3b8; margin-bottom: 20px;">Stay informed with curated AI news and breakthroughs</p>
         
         <div class="news-form">
@@ -406,7 +407,7 @@
 
     <!-- PROJECTS SECTION -->
     <div id="projects-section" class="content-section">
-        <h2 style="color: #d4af37; border-bottom: 2px solid #383c42; padding-bottom: 15px;">Client Projects & Case Studies</h2>
+        <h2 class="section-title" data-section-key="projects" style="color: #d4af37; border-bottom: 2px solid #383c42; padding-bottom: 15px;">Client Projects & Case Studies</h2>
         
         <div class="news-form">
             <h3 style="color: #add8e6; margin-top: 0;">Add New Project</h3>
@@ -429,7 +430,7 @@
 
     <!-- YOUR DEMAND SECTION -->
     <div id="your-demand-section" class="content-section">
-        <h2 style="color: #d4af37; border-bottom: 2px solid #383c42; padding-bottom: 15px;">Request Services</h2>
+        <h2 class="section-title" data-section-key="your-demand" style="color: #d4af37; border-bottom: 2px solid #383c42; padding-bottom: 15px;">Request Services</h2>
         <p style="color: #b0b3b8; margin-bottom: 20px;">Let me know how I can help with your AI & Data Analytics needs</p>
         
         <div class="opinion-form">
@@ -456,7 +457,7 @@
 
     <!-- NEWS SECTION -->
     <div id="news-section" class="content-section">
-        <h2 style="color: #d4af37; border-bottom: 2px solid #383c42; padding-bottom: 15px;">News & Updates</h2>
+        <h2 class="section-title" data-section-key="news" style="color: #d4af37; border-bottom: 2px solid #383c42; padding-bottom: 15px;">News & Updates</h2>
         
         <div class="news-form">
             <h3 style="color: #add8e6; margin-top: 0;">Add New Update</h3>
@@ -473,7 +474,7 @@
 
     <!-- OPINIONS SECTION -->
     <div id="opinions-section" class="content-section">
-        <h2 style="color: #d4af37; border-bottom: 2px solid #383c42; padding-bottom: 15px;">User Opinions & Feedback</h2>
+        <h2 class="section-title" data-section-key="opinions" style="color: #d4af37; border-bottom: 2px solid #383c42; padding-bottom: 15px;">User Opinions & Feedback</h2>
         
         <div class="opinion-form">
             <h3 style="color: #add8e6; margin-top: 0;">Share Your Opinion</h3>
@@ -516,6 +517,28 @@ function toggleVault() {
     v.style.display = (v.style.display === "block") ? "none" : "block";
 }
 
+// Map menu data-section to title base texts
+const sectionTitleMap = {
+    "blog": "Professional Blog",
+    "ai-updates": "Latest AI & Technology Updates",
+    "projects": "Client Projects & Case Studies",
+    "your-demand": "Request Services",
+    "news": "News & Updates",
+    "opinions": "User Opinions & Feedback"
+};
+
+function updateActiveSectionTitle(sectionKey) {
+    document.querySelectorAll('.section-title').forEach(titleEl => {
+        const key = titleEl.getAttribute('data-section-key');
+        const base = sectionTitleMap[key] || titleEl.textContent.replace(/:$/, '');
+        if (key === sectionKey) {
+            titleEl.textContent = base + ":";
+        } else {
+            titleEl.textContent = base;
+        }
+    });
+}
+
 // Navigation
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', function(e) {
@@ -525,8 +548,10 @@ document.querySelectorAll('.nav-link').forEach(link => {
         document.querySelectorAll('.content-section').forEach(section => {
             section.classList.remove('active');
         });
-        const sectionId = this.getAttribute('data-section') + '-section';
+        const sectionKey = this.getAttribute('data-section');
+        const sectionId = sectionKey + '-section';
         document.getElementById(sectionId).classList.add('active');
+        updateActiveSectionTitle(sectionKey);
     });
 });
 
@@ -853,6 +878,8 @@ window.addEventListener('DOMContentLoaded', function() {
     renderDemands();
     renderNews();
     renderOpinions();
+    // Ensure titles start without colon until a menu option is selected
+    updateActiveSectionTitle(null);
 });
 </script>
 
